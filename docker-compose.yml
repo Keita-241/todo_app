@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    container_name: todo_app
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    volumes:
+      - ./usr/src/app:/usr/src/app
+    tty: true
+    stdin_open: true
+    ports:
+      - '3000:3000'
