@@ -4,6 +4,8 @@ FROM node:14.17.5
 WORKDIR /usr/src/app
 
 RUN npm i
+RUN npm install -D nodemon
+RUN npm install ejs
 
 # expressインストール
 RUN npm install -g express-generator
