@@ -3,6 +3,16 @@
     <head>
         <meta charset="utf-8">
         <title>list</title>
+        <link type="text/css" rel="stylesheet" href="stylesheets/PaginateMyTable.css" />
+        <script type="text/javascript" src="javascripts/jquery-3.6.0.min.js"></script>
+        <script src="javascripts/PaginateMyTable.js"></script>
+        <script>
+        $(document).ready(function() {
+            $(".mytable").paginate({
+                rows: 5,          // Set number of rows per page. Default: 5
+            });
+        });
+        </script>
         <style>
             body{
                 padding: 20px 50px;
@@ -17,13 +27,15 @@
     </head>
     <body>
         <h1>What should I do !?</h1>
-        <table border="bold">
+        <table class="mytable" border="bold">
+            <thead>
             <tr>
                 <th>id</th>
                 <th>title</th>
                 <th>content</th>
                 <th>created_at</th>
             </tr>
+            </thead>
             <% for (row of list) { %>
             <tr>
                 <td><%= row.id %></td>
