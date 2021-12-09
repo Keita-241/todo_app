@@ -8,5 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/todo_app/list', userController.todoList);
+router.get('/todo_app/create', userController.create);
+router.post('/todo_app/create_done', userController.create_done);
 
 module.exports = router;

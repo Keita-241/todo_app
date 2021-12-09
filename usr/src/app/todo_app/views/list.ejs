@@ -3,38 +3,32 @@
     <head>
         <meta charset="utf-8">
         <title>list</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <link type="text/css" rel="stylesheet" href="stylesheets/PaginateMyTable.css" />
         <script type="text/javascript" src="javascripts/jquery-3.6.0.min.js"></script>
         <script src="javascripts/PaginateMyTable.js"></script>
         <script>
         $(document).ready(function() {
             $(".mytable").paginate({
-                rows: 5,          // Set number of rows per page. Default: 5
+                rows: 1,          // Set number of rows per page. Default: 5
             });
         });
         </script>
-        <style>
-            body{
-                padding: 20px 50px;
-            }
-            h1{
-                text-align: center;
-            }
-            table{
-                margin: 0 auto;
-            }
-        </style>
     </head>
-    <body>
-        <h1>What should I do !?</h1>
-        <table class="mytable" border="bold">
+    <body class="px-4 py-5">
+        <h1 class="text-secondary text-center">What should I do !?</h1>
+        <div class="w-25">
+            <a href="/todo_app/create" class="btn btn-secondary btn-lg mx-auto d-block w-50">新規作成</a>
+        </div>
+        <table class="mytable table mx-auto mt-5 w-75">
             <thead>
-            <tr>
-                <th>id</th>
-                <th>title</th>
-                <th>content</th>
-                <th>created_at</th>
-            </tr>
+                <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>content</th>
+                    <th>created_at</th>
+                </tr>
             </thead>
             <% for (row of list) { %>
             <tr>
