@@ -1,0 +1,14 @@
+FROM node:14.17.5
+
+# app-dir
+WORKDIR /usr/src/app
+
+RUN npm i
+RUN npm install -D nodemon
+RUN npm install ejs
+
+# expressインストール
+RUN npm install -g express-generator
+RUN express todo_app
+WORKDIR /usr/src/app/todo_app
+RUN npm i

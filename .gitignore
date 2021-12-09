@@ -1,0 +1,4 @@
+usr/src/app/todo_app/node_modules/
+usr/src/app/node_modules/
+docker/db
+.vscode
