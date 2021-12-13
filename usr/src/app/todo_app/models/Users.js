@@ -1,14 +1,11 @@
 const mysql = require('mysql');
-const table = 'users';
+var express = require('express');
+var app = express();
+var config = require('../config/' + app.get('env') + '.json');
 
 module.exports = {
     createConnect: function () {
-        const connect = mysql.createConnection({
-            host: 'mysqldb',
-            user: 'root',
-            password: 'root',
-            database: 'todo_app'
-        });
+        const connect = mysql.createConnection(config.db);
         return connect;
     },
 
