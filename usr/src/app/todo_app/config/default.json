@@ -1,13 +1,9 @@
 {
-    "server": {
-        "port": 3010
-    },
-
     "db": {
         "host": "mysqldb",
         "user": "root",
         "password": "root",
-        "database": "todo_app_test",
+        "database": "todo_app",
         "timezone": "Asia/Tokyo"
     }
 }

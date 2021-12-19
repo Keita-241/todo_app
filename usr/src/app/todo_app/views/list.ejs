@@ -11,7 +11,7 @@
         <script>
         $(document).ready(function() {
             $(".mytable").paginate({
-                rows: 1,          // Set number of rows per page. Default: 5
+                rows: 3,          // Set number of rows per page. Default: 5
             });
         });
         </script>
@@ -28,6 +28,7 @@
                     <th>title</th>
                     <th>content</th>
                     <th>created_at</th>
+                    <th> </th>
                 </tr>
             </thead>
             <% for (row of list) { %>
@@ -35,8 +36,8 @@
                 <td><%= row.id %></td>
                 <td><%= row.title %></td>
                 <td><%= row.content %></td>
-                <% const created_at = String(row.created_at).split(' GMT').shift() %>
-                <td><%= created_at %></td>
+                <td><%= row.created_at %></td>
+                <td><a href="/todo_app/update?id=<%= row.id %>" class="btn btn-outline-secondary">編集</a></td>
             </tr>
             <% } %>
         </table>
