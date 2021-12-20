@@ -22,3 +22,4 @@
     - ページング(参考サイト：https://webkaru.net/jquery-plugin/paginate-table/)
 - 2021/12/9  新規作成機能追加
 - 2021/12/20 編集機能追加
+- 2021/12/21 論理削除機能追加

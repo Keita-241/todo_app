@@ -21,7 +21,7 @@ module.exports = {
         return new Promise ((resolve, reject) => {
         const con = this.createConnect();
         con.query(
-            `select * from tasks`,  (err, result, fields) => {
+            `select * from tasks where deleted_at IS NULL`,  (err, result, fields) => {
             if ( err ) {
                 reject(err);
             } else {
@@ -79,6 +79,22 @@ module.exports = {
         const con = this.createConnect();
         con.query(
             `update tasks set title="${title}", content="${content}" where id=${id}`,  (err, result, fields) => {
+            if ( err ) {
+                reject(err);
+            } else {
+                console.log(result);
+                resolve(result);
+            }
+            });
+        con.end();
+        });
+    },
+
+    deleteTodo: function (id, title, content) {
+        return new Promise ((resolve, reject) => {
+        const con = this.createConnect();
+        con.query(
+            `update tasks set deleted_at=CURRENT_TIMESTAMP where id=${id}`,  (err, result, fields) => {
             if ( err ) {
                 reject(err);
             } else {

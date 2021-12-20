@@ -25,7 +25,6 @@ module.exports = {
         Users.getTodoRow(req.query.id).then((result) => {
             res.render(Views + 'update',{data: result.shift()});
         });
-
     },
 
     update_done: function (req, res, next) {
@@ -35,5 +34,17 @@ module.exports = {
         Users.updateTodo(id, title, content).then((result) => {
             res.redirect(req.baseUrl + '/todo_app/list');
         });
-    }
+    },
+
+    delete_check: function (req, res, next) {
+        Users.getTodoRow(req.query.id).then((result) => {
+            res.render(Views + 'delete_check',{data: result.shift()});
+        });
+    },
+
+    delete_done: function (req, res, next) {
+        Users.deleteTodo(req.query.id).then((result) => {
+            res.redirect(req.baseUrl + '/todo_app/list');
+        });
+    },
 }

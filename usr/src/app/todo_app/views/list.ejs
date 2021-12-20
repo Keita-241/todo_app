@@ -34,10 +34,15 @@
             <% for (row of list) { %>
             <tr>
                 <td><%= row.id %></td>
-                <td><%= row.title %></td>
-                <td><%= row.content %></td>
+                <td class="text-break"><%= row.title %></td>
+                <td class="text-break"><%= row.content %></td>
                 <td><%= row.created_at %></td>
-                <td><a href="/todo_app/update?id=<%= row.id %>" class="btn btn-outline-secondary">編集</a></td>
+                <td>
+                    <div class="d-flex mx-auto justify-content-around">
+                        <a href="/todo_app/update?id=<%= row.id %>" class="btn btn-outline-secondary d-block">編集</a>
+                        <a href="/todo_app/delete_check?id=<%= row.id %>" class="btn btn-outline-secondary d-block">削除</a>
+                    </div>
+                </td>
             </tr>
             <% } %>
         </table>

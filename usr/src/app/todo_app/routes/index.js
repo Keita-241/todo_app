@@ -12,5 +12,7 @@ router.get('/todo_app/create', userController.create);
 router.post('/todo_app/create_done', userController.create_done);
 router.get('/todo_app/update', userController.update);
 router.post('/todo_app/update_done', userController.update_done);
+router.get('/todo_app/delete_check', userController.delete_check);
+router.get('/todo_app/delete_done', userController.delete_done);
 
 module.exports = router;
