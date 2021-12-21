@@ -17,8 +17,17 @@
                 <label for="content">内容</label><br />
                 <textarea class="w-100" id="content" name="content" placeholder="詳細を入力してください" style="height: 100px;"><%= data.content %></textarea>
             </div>
+            <% if(typeof errorMessage != 'undefined') { %>
+                <ul class="w-50 my-4 mx-auto">
+                    <% for (let n in errorMessage) { %>
+                    <li class="text-danger">
+                        <%= errorMessage[n].msg %>
+                    </li>
+                    <% } %>
+                </ul>
+            <% } %>
             <div class="d-flex w-50 mx-auto">
-                <button class="btn btn-outline-secondary btn-lg mx-auto w-25" onclick="history.back()">戻る</button>
+                <a href="/todo_app/list" class="btn btn-outline-secondary btn-lg mx-auto w-25" onclick="history.back()">戻る</a>
                 <button class="btn btn-outline-secondary btn-lg mx-auto w-25" type="submit">保存</button>
             </div>
         </form>

@@ -10,14 +10,31 @@
         <form action="create_done" method="post">
             <div class="w-50 my-4 mx-auto">
                 <label for="title">タイトル</label><br />
-                <input type="text" class="w-100" id="title" name="title" placeholder="タイトルを入力してください">
+                <% if(typeof title != 'undefined') { %>
+                    <input type="text" class="w-100" id="title" name="title" value="<%= title %>" placeholder="タイトルを入力してください">
+                <% } else { %>
+                    <input type="text" class="w-100" id="title" name="title" placeholder="タイトルを入力してください">
+                <% } %>
             </div>
             <div class="w-50 my-4 mx-auto">
                 <label for="content">内容</label><br />
-                <textarea class="w-100" id="content" name="content" placeholder="詳細を入力してください" style="height: 100px;"></textarea>
+                <% if(typeof content != 'undefined') { %>
+                    <textarea class="w-100" id="content" name="content" value="<%= content %>" placeholder="詳細を入力してください" style="height: 100px;"></textarea>
+                <% } else { %>
+                    <textarea class="w-100" id="content" name="content" placeholder="詳細を入力してください" style="height: 100px;"></textarea>
+                <% } %>
             </div>
+            <% if(typeof errorMessage != 'undefined') { %>
+                <ul class="w-50 my-4 mx-auto">
+                    <% for (let n in errorMessage) { %>
+                    <li class="text-danger">
+                        <%= errorMessage[n].msg %>
+                    </li>
+                    <% } %>
+                </ul>
+            <% } %>
             <div class="d-flex w-50 mx-auto">
-                <button class="btn btn-outline-secondary btn-lg mx-auto w-25" onclick="history.back()">戻る</button>
+                <a href="/todo_app/list" class="btn btn-outline-secondary btn-lg mx-auto w-25">戻る</a>
                 <button class="btn btn-outline-secondary btn-lg mx-auto w-25" type="submit">作成</button>
             </div>
         </form>
