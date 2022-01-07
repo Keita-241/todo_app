@@ -13,6 +13,36 @@ module.exports = {
         return connect;
     },
 
+    authentication: function (email, password) {
+        return new Promise ((resolve, reject) => {
+        const con = this.createConnect();
+        con.query(
+            `select * from users where mail="${email}" AND password="${password}"`,  (err, result, fields) => {
+            if ( err ) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+            });
+        con.end();
+        });
+    },
+
+    findById: function (id) {
+        return new Promise ((resolve, reject) => {
+        const con = this.createConnect();
+        con.query(
+            `select * from users where id="${id}"`,  (err, result, fields) => {
+            if ( err ) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+            });
+        con.end();
+        });
+    },
+
     /**
      * DBからTODOリスト取得
      * @returns (object) result

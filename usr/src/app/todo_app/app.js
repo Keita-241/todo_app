@@ -19,6 +19,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/todo_app', express.static(path.join(__dirname, 'public')));
 
+// authentication
+require("./routes/authenticate")(app);
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 

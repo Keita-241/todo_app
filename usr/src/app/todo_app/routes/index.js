@@ -5,13 +5,8 @@ const userController = require('../controllers/UserController')
 const todoValidator = require('../validators/todoValidator');
 const Views = '../views/'
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-router.get('/todo_app/list', userController.todoList);
-router.get('/todo_app/create', userController.create);
+router.get('/todo_app/list', isAuthenticated, userController.todoList);
+router.get('/todo_app/create', isAuthenticated, userController.create);
 router.post('/todo_app/create_done',todoValidator, (req, res) => {
   // バリデーションの結果にエラーがあるかのチェック
     const errors = validationResult(req);
@@ -24,7 +19,7 @@ router.post('/todo_app/create_done',todoValidator, (req, res) => {
     }
     userController.create_done;
 });
-router.get('/todo_app/update', userController.update);
+router.get('/todo_app/update', isAuthenticated, userController.update);
 router.post('/todo_app/update_done',todoValidator, (req, res) => {
   // バリデーションの結果にエラーがあるかのチェック
     const errors = validationResult(req);
@@ -40,7 +35,16 @@ router.post('/todo_app/update_done',todoValidator, (req, res) => {
     }
     userController.update_done;
 });
-router.get('/todo_app/delete_check', userController.delete_check);
-router.get('/todo_app/delete_done', userController.delete_done);
+router.get('/todo_app/delete_check', isAuthenticated, userController.delete_check);
+router.get('/todo_app/delete_done', isAuthenticated, userController.delete_done);
 
 module.exports = router;
+// 認証
+function isAuthenticated(req, res, next){
+  if (req.isAuthenticated()) {  // 認証済
+      return next();
+  }
+  else {  // 認証されていない
+      res.redirect('/users/login');  // ログイン画面に遷移
+  }
+}
