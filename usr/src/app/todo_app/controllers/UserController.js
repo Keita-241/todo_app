@@ -5,7 +5,8 @@ const Views = '../views/'
 module.exports = {
     todoList: function (req, res, next) {
         Users.getTodoList().then((result) => {
-            res.render(Views + 'list',{list: result});
+            const user = req.user.name;
+            res.render(Views + 'list',{list: result, user: user});
         });
     },
 
@@ -45,6 +46,18 @@ module.exports = {
     delete_done: function (req, res, next) {
         Users.deleteTodo(req.query.id).then((result) => {
             res.redirect(req.baseUrl + '/todo_app/list');
+        });
+    },
+
+    sign_up: function (req, res, next) {
+        // res.redirect(307, req.baseUrl + '/users/login');
+        console.log("aaaaa");
+        const name = req.body.name;
+        const email = req.body.email;
+        const password = req.body.password;
+        console.log(name, email, password);
+        Users.signUpUser(name, email, password).then((result) => {
+            res.redirect(307, req.baseUrl + '/login');
         });
     },
 }

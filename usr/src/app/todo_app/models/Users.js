@@ -2,6 +2,7 @@ const mysql = require('mysql');
 var express = require('express');
 var app = express();
 var config = require('../config/default.json');
+const passport = require('passport');
 
 module.exports = {
     /**
@@ -11,6 +12,21 @@ module.exports = {
     createConnect: function () {
         const connect = mysql.createConnection(config.db);
         return connect;
+    },
+
+    signUpUser: function (name, email, password) {
+        return new Promise ((resolve, reject) => {
+        const con = this.createConnect();
+        con.query(
+            `insert into users (name, mail, password) values ("${name}", "${email}", "${password}")`,  (err, result, fields) => {
+            if ( err ) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+            });
+        con.end();
+        });
     },
 
     authentication: function (email, password) {

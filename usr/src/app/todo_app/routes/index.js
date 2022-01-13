@@ -1,9 +1,9 @@
 const express = require('express');
 const { validationResult } = require('express-validator');
 const router = express.Router();
-const userController = require('../controllers/UserController')
+const userController = require('../controllers/UserController');
 const todoValidator = require('../validators/todoValidator');
-const Views = '../views/'
+const Views = '../views/';
 
 router.get('/todo_app/list', isAuthenticated, userController.todoList);
 router.get('/todo_app/create', isAuthenticated, userController.create);

@@ -17,7 +17,14 @@
         </script>
     </head>
     <body class="px-4 py-5">
-        <h1 class="text-secondary text-center">What should I do !?</h1>
+        <div class="w-75 d-flex justify-content-around mx-auto">
+            <div style="width: 80px;"></div>
+            <h1 class="text-secondary text-center">What should I do !?</h1>
+            <div class="mt-2">
+                <p><%= user %><br /><span class="text-secondary">でログイン中</span></p>
+                <a href="/users/logout" class="btn btn-outline-secondary">Log Out</a>
+            </div>
+        </div>
         <div class="w-25">
             <a href="/todo_app/create" class="btn btn-secondary btn-lg mx-auto d-block w-50">新規作成</a>
         </div>

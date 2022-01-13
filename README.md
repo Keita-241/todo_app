@@ -12,6 +12,8 @@
     - bootstrap
 - DB
     - MySQL
+- バリデーション
+    - Express-validator
 - 認証
     - passport
 
@@ -30,3 +32,4 @@
 - 2022/1/7   認証機能追加（ログイン/ログアウトボタン未設置）
     - passport(参考サイト：https://zenn.dev/wkb/books/node-tutorial/viewer/todo_10)
     - 参考サイト２：https://qiita.com/tinymouse/items/fa910bf80a038c7f9ccb
+- 2022/1/13  ユーザー登録機能実装&ログイン/ログアウトボタン設置
