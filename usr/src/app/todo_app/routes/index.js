@@ -17,7 +17,7 @@ router.post('/todo_app/create_done',todoValidator, (req, res) => {
         errorMessage: errors.array()
       })
     }
-    userController.create_done;
+    userController.create_done(req,res);
 });
 router.get('/todo_app/update', isAuthenticated, userController.update);
 router.post('/todo_app/update_done',todoValidator, (req, res) => {
@@ -33,7 +33,7 @@ router.post('/todo_app/update_done',todoValidator, (req, res) => {
         errorMessage: errors.array()
       })
     }
-    userController.update_done;
+    userController.update_done(req,res);
 });
 router.get('/todo_app/delete_check', isAuthenticated, userController.delete_check);
 router.get('/todo_app/delete_done', isAuthenticated, userController.delete_done);
